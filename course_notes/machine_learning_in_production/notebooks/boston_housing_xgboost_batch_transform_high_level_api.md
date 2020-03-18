@@ -2,10 +2,6 @@
 
 ## Using XGBoost in SageMaker (Batch Transform)
 
-_Deep Learning Nanodegree Program | Deployment_
-
----
-
 As an introduction to using SageMaker's High Level Python API we will look at a relatively simple problem. Namely, we will use the [Boston Housing Dataset](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html) to predict the median value of a home in the area of Boston Mass.
 
 The documentation for the high level API can be found on the [ReadTheDocs page](http://sagemaker.readthedocs.io/en/latest/)
@@ -345,7 +341,7 @@ plt.title("Median Price vs Predicted Price")
     Text(0.5, 1.0, 'Median Price vs Predicted Price')
 
 
-![png](boston_housing_xgboost_batch_transform_high_level_performance.png)
+![png](boston_housing_xgboost_batch_transform_high_level_api_performance.png)
 
 
 ## Optional: Clean up
