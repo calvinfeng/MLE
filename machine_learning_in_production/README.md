@@ -88,3 +88,31 @@ This is not meant to be used as a real time on-demand service.
 
 ## Lesson 3 Deploying and Using a Model
 
+Instead of batch transform, now we are using actual deployment of a model. The high level API
+looks pretty nice but it hides all the endpoints and request objects.
+
+```python
+container = get_image_uri(session.boto_region_name, 'xgboost', '0.90-1')
+
+xgb = sagemaker.estimator.Estimator(container,
+                                    role,
+                                    train_instance_count=1,
+                                    train_instance_type='ml.m4.xlarge',
+                                    output_path='s3://{}/{}/output'.format(session.default_bucket(), prefix),
+                                    sagemaker_session=session)
+
+xgb.set_hyperparameters(max_depth=5,
+                        eta=0.2,
+                        gamma=4,
+                        min_child_weight=6,
+                        subsample=0.8,
+                        objective='reg:linear',
+                        early_stopping_rounds=10,
+                        num_round=500)
+
+xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge')
+```
+
+### Boston House Market Prediction
+
+* [High Level API](./boston_housing_xgboost_deploy_high_level_api.md)
