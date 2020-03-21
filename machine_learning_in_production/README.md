@@ -9,7 +9,7 @@ files and display them here.
 > model into an existing production environment so that the model can be used to make decisions or
 > predictions based on upon data input into this model.
 
-There are 3 primary steps to a Machine Learning Workflow. 
+There are 3 primary steps to a Machine Learning Workflow.
 
 1. Explore & Process Data
 2. Modeling
@@ -74,7 +74,7 @@ a daily or weekly basis.
 XGBoost will be used a lot here, because our data siz is relatively small, not suitable for any
 deep learning method. Also, XGBoost is computationally friendly, it will save me money and time.
 
-### Boston House Market Prediction
+### Boston House Market Prediction Batch Transform
 
 Batch transform is essentially a batch job that AWS offers to run predictions on a batch of data.
 This is not meant to be used as a real time on-demand service.
@@ -82,7 +82,7 @@ This is not meant to be used as a real time on-demand service.
 * [High Level API](./boston_housing_xgboost_batch_transform_high_level_api.md)
 * [Low Level API](./boston_housing_xgboost_batch_transform_low_level_api.md)
 
-### Mini Project: IMDB Sentimental Analysis
+### IMDB Movie Review Sentimental Analysis
 
 * [IMDB Sentimental Analysis](./imdb_sentiment_analysis_xgboost_batch_transform.md)
 
@@ -113,11 +113,11 @@ xgb.set_hyperparameters(max_depth=5,
 xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge')
 ```
 
-### Boston House Market Prediction
+### Boston House Market Prediction Deployment
 
 * [High Level API](boston_housing_xgboost_deploy_high_level_api.md)
 * [Low Level API](boston_housing_xgboost_deploy_low_level_api.md)
 
-### IMDB Movie Review Sentimental Analysis
+### IMDB Movie Review Sentimental Analysis Web Application
 
 * [Web Application](imdb_sentiment_analysis_xgboost_web_app.md)
