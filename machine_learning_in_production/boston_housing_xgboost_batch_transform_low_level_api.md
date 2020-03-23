@@ -70,7 +70,6 @@ role = get_execution_role()
 Fortunately, this dataset can be retrieved using sklearn and so this step is relatively
 straightforward.
 
-
 ```python
 boston = load_boston()
 ```
@@ -183,7 +182,7 @@ training_params['ResourceConfig'] = {
     "InstanceType": "ml.m4.xlarge",
     "VolumeSizeInGB": 5
 }
-    
+
 training_params['StoppingCondition'] = {
     "MaxRuntimeInSeconds": 86400
 }

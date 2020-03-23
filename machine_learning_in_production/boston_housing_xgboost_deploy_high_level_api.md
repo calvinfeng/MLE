@@ -67,7 +67,6 @@ role = get_execution_role()
 
 Fortunately, this dataset can be retrieved using sklearn and so this step is relatively straightforward.
 
-
 ```python
 boston = load_boston()
 ```
@@ -76,7 +75,6 @@ boston = load_boston()
 
 Given that this is clean tabular data, we don't need to do any processing. However, we do need to
 split the rows in the dataset up into train, test and validation sets.
-
 
 ```python
 # First we package up the input data and the target variable (the median value) as pandas dataframes. This
@@ -103,14 +101,12 @@ and hide some of the details.
 
 First we need to create the train and validation csv files which we will then upload to S3.
 
-
 ```python
 # This is our local data directory. We need to make sure that it exists.
 data_dir = '../data/boston'
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 ```
-
 
 ```python
 # We use pandas to save our train and validation data to csv files. Note that we make sure not to include header
@@ -134,6 +130,7 @@ prefix = 'boston-xgboost-deploy-hl'
 val_location = session.upload_data(os.path.join(data_dir, 'validation.csv'), key_prefix=prefix)
 train_location = session.upload_data(os.path.join(data_dir, 'train.csv'), key_prefix=prefix)
 ```
+
 ## Step 4: Train the XGBoost model
 
 Now that we have the training and validation data uploaded to S3, we can construct our XGBoost model
@@ -183,7 +180,6 @@ xgb.set_hyperparameters(max_depth=5,
 
 Now that we have our estimator object completely set up, it is time to train it. To do this we make
 sure that SageMaker knows our input data is in csv format and then execute the `fit` method.
-
 
 ```python
 # This is a wrapper around the location of our train and validation data, to make sure that SageMaker
@@ -295,7 +291,6 @@ Billable seconds: 61
 We will be skipping this step for now. We will still test our trained model but we are going to do
 it by using the deployed model, rather than setting up a batch transform job.
 
-
 ## Step 6: Deploy the trained model
 
 Now that we have fit our model to the training data, using the validation data to avoid overfitting,
@@ -308,7 +303,6 @@ shut it down. This is important to know since the cost of a deployed endpoint de
 it has been running for.
 
 In other words **If you are no longer using a deployed endpoint, shut it down!**
-
 
 ```python
 xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge')
