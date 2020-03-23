@@ -74,15 +74,17 @@ a daily or weekly basis.
 XGBoost will be used a lot here, because our data siz is relatively small, not suitable for any
 deep learning method. Also, XGBoost is computationally friendly, it will save me money and time.
 
-### Boston House Market Prediction Batch Transform
+### Boston House Market XGBoost Batch Transform
 
 Batch transform is essentially a batch job that AWS offers to run predictions on a batch of data.
 This is not meant to be used as a real time on-demand service.
 
-* [High Level API](./boston_housing_xgboost_batch_transform_high_level_api.md)
-* [Low Level API](./boston_housing_xgboost_batch_transform_low_level_api.md)
+* [Batch Transform High Level API](./boston_housing_xgboost_batch_transform_high_level_api.md)
+* [Batch Transform Low Level API](./boston_housing_xgboost_batch_transform_low_level_api.md)
 
 ### IMDB Movie Review Sentimental Analysis
+
+This is a mini-project on natural language processing using XGBoost.
 
 * [IMDB Sentimental Analysis](./imdb_sentiment_analysis_xgboost_batch_transform.md)
 
@@ -113,11 +115,20 @@ xgb.set_hyperparameters(max_depth=5,
 xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge')
 ```
 
-### Boston House Market Prediction Deployment
+### Boston House Market XGBoost Deployment
 
-* [High Level API](boston_housing_xgboost_deploy_high_level_api.md)
-* [Low Level API](boston_housing_xgboost_deploy_low_level_api.md)
+* [Deployment High Level API](boston_housing_xgboost_deploy_high_level_api.md)
+* [Deployment Low Level API](boston_housing_xgboost_deploy_low_level_api.md)
 
 ### IMDB Movie Review Sentimental Analysis Web Application
 
 * [Web Application](imdb_sentiment_analysis_xgboost_web_app.md)
+
+## Lesson 4 Updating a Model
+
+### Boston House Market Model Update
+
+This is an example of how to use two different models on one endpoint. The two models are load
+balanced by AWS. Users may specify load distribution using weight on each model.
+
+* [Update an Endpoint](boston_housing_updating_an_endpoint.md)

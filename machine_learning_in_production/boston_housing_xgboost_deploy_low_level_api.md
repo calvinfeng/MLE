@@ -42,8 +42,7 @@ from sklearn.datasets import load_boston
 import sklearn.model_selection
 ```
 
-In addition to the modules above, we need to import the various bits of SageMaker that we will be using. 
-
+In addition to the modules above, we need to import the various bits of SageMaker that we will be using.
 
 ```python
 import sagemaker
@@ -71,8 +70,8 @@ boston = load_boston()
 
 ## Step 2: Preparing and splitting the data
 
-Given that this is clean tabular data, we don't need to do any processing. However, we do need to split the rows in the dataset up into train, test and validation sets.
-
+Given that this is clean tabular data, we don't need to do any processing. However, we do need to
+split the rows in the dataset up into train, test and validation sets.
 
 ```python
 # First we package up the input data and the target variable (the median value) as pandas dataframes. This
@@ -90,12 +89,14 @@ X_train, X_val, Y_train, Y_val = sklearn.model_selection.train_test_split(X_trai
 
 ## Step 3: Uploading the training and validation files to S3
 
-When a training job is constructed using SageMaker, a container is executed which performs the training operation. This container is given access to data that is stored in S3. This means that we need to upload the data we want to use for training to S3. We can use the SageMaker API to do this and hide some of the details.
+When a training job is constructed using SageMaker, a container is executed which performs the
+training operation. This container is given access to data that is stored in S3. This means that we
+need to upload the data we want to use for training to S3. We can use the SageMaker API to do this
+and hide some of the details.
 
 ### Save the data locally
 
 First we need to create the train and validation csv files which we will then upload to S3.
-
 
 ```python
 # This is our local data directory. We need to make sure that it exists.
@@ -103,7 +104,6 @@ data_dir = '../data/boston'
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 ```
-
 
 ```python
 # We use pandas to save our train and validation data to csv files. Note that we make sure not to include header
