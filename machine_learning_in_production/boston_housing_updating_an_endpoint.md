@@ -316,7 +316,7 @@ xgb_model_info = session.sagemaker_client.create_model(
 pprint(xgb_model_info)
 ```
 
-```json
+```text
 {
     'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-xgboost-model2020-03-22-20-06-20',
     'ResponseMetadata': {
@@ -343,16 +343,19 @@ the endpoint itself.
 # As before, we need to give our endpoint configuration a name which should be unique
 xgb_endpoint_config_name = "boston-update-xgboost-endpoint-config-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 
+production_variants = [
+    {
+        "InstanceType": "ml.m4.xlarge",
+        "InitialVariantWeight": 1,
+        "InitialInstanceCount": 1,
+        "ModelName": xgb_model_name,
+        "VariantName": "XGB-Model"
+    }
+]
+
 # And then we ask SageMaker to construct the endpoint configuration
-xgb_endpoint_config_info = session.sagemaker_client.create_endpoint_config(
-                            EndpointConfigName = xgb_endpoint_config_name,
-                            ProductionVariants = [{
-                                "InstanceType": "ml.m4.xlarge",
-                                "InitialVariantWeight": 1,
-                                "InitialInstanceCount": 1,
-                                "ModelName": xgb_model_name,
-                                "VariantName": "XGB-Model"
-                            }])
+xgb_endpoint_config_info = session.sagemaker_client.create_endpoint_config(EndpointConfigName=xgb_endpoint_config_name,
+                                                                           ProductionVariants=production_variants)
 ```
 
 ### Deploy the endpoint
@@ -367,9 +370,8 @@ that you shut it down once you've finished with it!
 endpoint_name = "boston-update-endpoint-" + strftime("%Y-%m-%d-%H-%M-%S", gmtime())
 
 # And then we can deploy our endpoint
-endpoint_info = session.sagemaker_client.create_endpoint(
-                    EndpointName = endpoint_name,
-                    EndpointConfigName = xgb_endpoint_config_name)
+endpoint_info = session.sagemaker_client.create_endpoint(EndpointName=endpoint_name,
+                                                         EndpointConfigName=xgb_endpoint_config_name)
 ```
 
 ```python
@@ -381,17 +383,16 @@ endpoint_dec = session.wait_for_endpoint(endpoint_name)
 Now that our model is trained and deployed we can send some test data to it and evaluate the results.
 
 ```python
-response = session.sagemaker_runtime_client.invoke_endpoint(
-                                                EndpointName = endpoint_name,
-                                                ContentType = 'text/csv',
-                                                Body = ','.join(map(str, X_test.values[0])))
+response = session.sagemaker_runtime_client.invoke_endpoint(EndpointName=endpoint_name,
+                                                            ContentType='text/csv',
+                                                            Body=','.join(map(str, X_test.values[0])))
 ```
 
 ```python
 pprint(response)
 ```
 
-```json
+```text
 {
     'Body': <botocore.response.StreamingBody object at 0x7fdadc1153c8>,
     'ContentType': 'text/csv; charset=utf-8',
@@ -437,10 +438,10 @@ Now that we know that the XGBoost endpoint works, we can shut it down. We will m
 later.
 
 ```python
-session.sagemaker_client.delete_endpoint(EndpointName = endpoint_name)
+session.sagemaker_client.delete_endpoint(EndpointName=endpoint_name)
 ```
 
-```json
+```text
 {
     'ResponseMetadata': {
         'RequestId': 'b06c5c22-4e1a-4804-99a1-bb11695ec552',
@@ -476,8 +477,7 @@ linear = sagemaker.estimator.Estimator(linear_container, # The name of the train
                                         role,      # The IAM role to use (our current role in this case)
                                         train_instance_count=1, # The number of instances to use for training
                                         train_instance_type='ml.m4.xlarge', # The type of instance ot use for training
-                                        output_path='s3://{}/{}/output'.format(session.default_bucket(), prefix),
-                                                                            # Where to save the output (the model artifacts)
+                                        output_path='s3://{}/{}/output'.format(session.default_bucket(), prefix), # Where to save the output (the model artifacts)
                                         sagemaker_session=session) # The current SageMaker session
 ```
 
@@ -2617,7 +2617,7 @@ linear_model_info = session.sagemaker_client.create_model(
 pprint(linear_model_info)
 ```
 
-```json
+```text
 {
     'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-linear-model2020-03-22-21-54-30',
     'ResponseMetadata': {
@@ -2693,7 +2693,7 @@ response = session.sagemaker_runtime_client.invoke_endpoint(
 pprint(response)
 ```
 
-```json
+```text
 {
     'Body': <botocore.response.StreamingBody object at 0x7fdadc171a58>,
     'ContentType': 'application/json',
@@ -2721,7 +2721,7 @@ result = response['Body'].read().decode("utf-8")
 pprint(result) # Linear model performs much better than XGBoost model, it's quite simple. The data is indeed linear.
 ```
 
-```json
+```text
 {
     "predictions": [
         {"score": 11.719074249267578}
@@ -2827,7 +2827,7 @@ response = session.sagemaker_runtime_client.invoke_endpoint(
 pprint(response)
 ```
 
-```json
+```text
 {
     'Body': <botocore.response.StreamingBody object at 0x7fdadca87518>,
     'ContentType': 'text/csv; charset=utf-8',
@@ -2862,7 +2862,7 @@ for rec in range(10):
     print("Actual: {}".format(Y_test.values[rec]))
 ```
 
-```json
+```text
 {'Body': <botocore.response.StreamingBody object at 0x7fdadcb3f438>,
     'ContentType': 'application/json',
     'InvokedProductionVariant': 'Linear-Model',
@@ -3002,7 +3002,7 @@ If at some point we aren't sure about the properties of a deployed endpoint, we 
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```json
+```text
 {
     'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
     'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
@@ -3072,7 +3072,7 @@ the newly deployed model, making sure that this happens seamlessly in the backgr
 session.sagemaker_client.update_endpoint(EndpointName=endpoint_name, EndpointConfigName=linear_endpoint_config_name)
 ```
 
-```json
+```text
 {
     "EndpointArn":"arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15",
     "ResponseMetadata":{
@@ -3097,7 +3097,7 @@ has the same characteristics it had before.
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```json
+```text
 {
     'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
     'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
@@ -3160,7 +3160,7 @@ endpoint_dec = session.wait_for_endpoint(endpoint_name)
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```json
+```text
 {
     'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
     'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
@@ -3206,7 +3206,7 @@ Now that we've finished, we need to make sure to shut down the endpoint.
 session.sagemaker_client.delete_endpoint(EndpointName = endpoint_name)
 ```
 
-```json
+```text
 {
     "ResponseMetadata":{
         "RequestId":"f0a7c173-9505-40b7-bc6b-6b26a7906ff4",
