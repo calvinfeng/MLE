@@ -62,7 +62,9 @@ xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge
 
 * [Web Application](imdb_sentiment_analysis_xgboost_web_app.md)
 
-## Lesson 4 Updating a Model
+## Lesson 4 Hyperparameter Tuning
+
+## Lesson 5 Updating a Model
 
 ### Boston House Market Model Update
 
@@ -70,3 +72,7 @@ This is an example of how to use two different models on one endpoint. The two m
 balanced by AWS. Users may specify load distribution using weight on each model.
 
 * [Update an Endpoint](boston_housing_updating_an_endpoint.md)
+
+### IMDB Movie Review Sentimental Analysis Model Update
+
+* [Update an Endpoint](imdb_sentiment_analysis_xgboost_updating_a_model.md)
