@@ -64,6 +64,14 @@ xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge
 
 ## Lesson 4 Hyperparameter Tuning
 
+### Boston House Market XGBoost Tuning
+
+* [Hyperparameter Tuning High Level API](boston_housing_xgboost_hyperparameter_tuning_high_level_api.md)
+
+### IMDB Movie Review Sentimental Analysis XGBoost Tuning
+
+* [XGBoost Tuning](imdb_sentiment_analysis_xgboost_hyperparameter_tuning.md)
+
 ## Lesson 5 Updating a Model
 
 ### Boston House Market Model Update
