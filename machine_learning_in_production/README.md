@@ -67,6 +67,7 @@ xgb_predictor = xgb.deploy(initial_instance_count=1, instance_type='ml.m4.xlarge
 ### Boston House Market XGBoost Tuning
 
 * [Hyperparameter Tuning High Level API](boston_housing_xgboost_hyperparameter_tuning_high_level_api.md)
+* [Hyperparameter Tuning Low Level API](boston_housing_xgboost_hyperparameter_tuning_low_level_api.md)
 
 ### IMDB Movie Review Sentimental Analysis XGBoost Tuning
 
