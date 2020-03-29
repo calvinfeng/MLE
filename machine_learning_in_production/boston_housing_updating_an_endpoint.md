@@ -316,22 +316,20 @@ xgb_model_info = session.sagemaker_client.create_model(
 pprint(xgb_model_info)
 ```
 
-```text
-{
-    'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-xgboost-model2020-03-22-20-06-20',
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '108',
-            'content-type': 'application/x-amz-json-1.1',
-            'date': 'Sun, 22 Mar 2020 20:06:20 GMT',
-            'x-amzn-requestid': '672f1705-2cd9-43db-9757-41ed54feefec'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': '672f1705-2cd9-43db-9757-41ed54feefec',
-        'RetryAttempts': 0
+    {
+        'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-xgboost-model2020-03-22-20-06-20',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '108',
+                'content-type': 'application/x-amz-json-1.1',
+                'date': 'Sun, 22 Mar 2020 20:06:20 GMT',
+                'x-amzn-requestid': '672f1705-2cd9-43db-9757-41ed54feefec'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '672f1705-2cd9-43db-9757-41ed54feefec',
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 ### Create the endpoint configuration
 
@@ -392,25 +390,23 @@ response = session.sagemaker_runtime_client.invoke_endpoint(EndpointName=endpoin
 pprint(response)
 ```
 
-```text
-{
-    'Body': <botocore.response.StreamingBody object at 0x7fdadc1153c8>,
-    'ContentType': 'text/csv; charset=utf-8',
-    'InvokedProductionVariant': 'XGB-Model',
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '18',
-            'content-type': 'text/csv; charset=utf-8',
-            'date': 'Sun, 22 Mar 2020 20:37:15 GMT',
-            'x-amzn-invoked-production-variant': 'XGB-Model',
-            'x-amzn-requestid': '0ae2fffa-4765-43a8-801b-38c8adc1e23f'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': '0ae2fffa-4765-43a8-801b-38c8adc1e23f',
-        'RetryAttempts': 0
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1153c8>,
+        'ContentType': 'text/csv; charset=utf-8',
+        'InvokedProductionVariant': 'XGB-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '18',
+                'content-type': 'text/csv; charset=utf-8',
+                'date': 'Sun, 22 Mar 2020 20:37:15 GMT',
+                'x-amzn-invoked-production-variant': 'XGB-Model',
+                'x-amzn-requestid': '0ae2fffa-4765-43a8-801b-38c8adc1e23f'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '0ae2fffa-4765-43a8-801b-38c8adc1e23f',
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 ```python
 result = response['Body'].read().decode("utf-8")
@@ -420,17 +416,13 @@ result = response['Body'].read().decode("utf-8")
 pprint(result)
 ```
 
-```text
-'10.521326065063477'
-```
+    '10.521326065063477'
 
 ```python
 Y_test.values[0]
 ```
 
-```text
-array([12.3])
-```
+    array([12.3])
 
 ## Shut down the endpoint
 
@@ -441,21 +433,19 @@ later.
 session.sagemaker_client.delete_endpoint(EndpointName=endpoint_name)
 ```
 
-```text
-{
-    'ResponseMetadata': {
-        'RequestId': 'b06c5c22-4e1a-4804-99a1-bb11695ec552',
-        'HTTPStatusCode': 200,
-        'HTTPHeaders': {
-            'x-amzn-requestid': 'b06c5c22-4e1a-4804-99a1-bb11695ec552',
-            'content-type': 'application/x-amz-json-1.1',
-            'content-length': '0',
-            'date': 'Sun, 22 Mar 2020 20:38:40 GMT'
-        },
-        'RetryAttempts': 0
+    {
+        'ResponseMetadata': {
+            'RequestId': 'b06c5c22-4e1a-4804-99a1-bb11695ec552',
+            'HTTPStatusCode': 200,
+            'HTTPHeaders': {
+                'x-amzn-requestid': 'b06c5c22-4e1a-4804-99a1-bb11695ec552',
+                'content-type': 'application/x-amz-json-1.1',
+                'content-length': '0',
+                'date': 'Sun, 22 Mar 2020 20:38:40 GMT'
+            },
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 ## Step 4 (B): Train the Linear model
 
@@ -2617,22 +2607,20 @@ linear_model_info = session.sagemaker_client.create_model(
 pprint(linear_model_info)
 ```
 
-```text
-{
-    'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-linear-model2020-03-22-21-54-30',
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '107',
-            'content-type': 'application/x-amz-json-1.1',
-            'date': 'Sun, 22 Mar 2020 21:54:30 GMT',
-            'x-amzn-requestid': 'a817fa72-ae06-49b5-9adf-945952a38809'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': 'a817fa72-ae06-49b5-9adf-945952a38809',
-        'RetryAttempts': 0
+    {
+        'ModelArn': 'arn:aws:sagemaker:us-west-2:171758673694:model/boston-update-linear-model2020-03-22-21-54-30',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '107',
+                'content-type': 'application/x-amz-json-1.1',
+                'date': 'Sun, 22 Mar 2020 21:54:30 GMT',
+                'x-amzn-requestid': 'a817fa72-ae06-49b5-9adf-945952a38809'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'a817fa72-ae06-49b5-9adf-945952a38809',
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 ### Create the endpoint configuration
 
@@ -2693,25 +2681,23 @@ response = session.sagemaker_runtime_client.invoke_endpoint(
 pprint(response)
 ```
 
-```text
-{
-    'Body': <botocore.response.StreamingBody object at 0x7fdadc171a58>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '48',
-            'content-type': 'application/json',
-            'date': 'Sun, 22 Mar 2020 22:03:52 GMT',
-            'x-amzn-invoked-production-variant': 'Linear-Model',
-            'x-amzn-requestid': '96a14434-f726-4f57-b472-d721c53d0d15'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': '96a14434-f726-4f57-b472-d721c53d0d15',
-        'RetryAttempts': 0
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc171a58>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:03:52 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': '96a14434-f726-4f57-b472-d721c53d0d15'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '96a14434-f726-4f57-b472-d721c53d0d15',
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 ```python
 result = response['Body'].read().decode("utf-8")
@@ -2721,21 +2707,17 @@ result = response['Body'].read().decode("utf-8")
 pprint(result) # Linear model performs much better than XGBoost model, it's quite simple. The data is indeed linear.
 ```
 
-```text
-{
-    "predictions": [
-        {"score": 11.719074249267578}
-    ]
-}
-```
+    {
+        "predictions": [
+            {"score": 11.719074249267578}
+        ]
+    }
 
 ```python
 Y_test.values[0]
 ```
 
-```text
-array([12.3])
-```
+    array([12.3])
 
 ## Shut down the endpoint
 
@@ -2745,9 +2727,7 @@ Now that we know that the Linear model's endpoint works, we can shut it down.
 session.sagemaker_client.delete_endpoint(EndpointName = endpoint_name)
 ```
 
-```text
-boston-update-endpoint-2020-03-22-22-10-15
-```
+    boston-update-endpoint-2020-03-22-22-10-15
 
 ## Step 6 (C): Deploy a combined model
 
@@ -2827,25 +2807,23 @@ response = session.sagemaker_runtime_client.invoke_endpoint(
 pprint(response)
 ```
 
-```text
-{
-    'Body': <botocore.response.StreamingBody object at 0x7fdadca87518>,
-    'ContentType': 'text/csv; charset=utf-8',
-    'InvokedProductionVariant': 'XGB-Model',
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '18',
-            'content-type': 'text/csv; charset=utf-8',
-            'date': 'Sun, 22 Mar 2020 22:17:09 GMT',
-            'x-amzn-invoked-production-variant': 'XGB-Model',
-            'x-amzn-requestid': '9151e286-9440-4131-b8a2-a6738d5c5419'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': '9151e286-9440-4131-b8a2-a6738d5c5419',
-        'RetryAttempts': 0
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadca87518>,
+        'ContentType': 'text/csv; charset=utf-8',
+        'InvokedProductionVariant': 'XGB-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '18',
+                'content-type': 'text/csv; charset=utf-8',
+                'date': 'Sun, 22 Mar 2020 22:17:09 GMT',
+                'x-amzn-invoked-production-variant': 'XGB-Model',
+                'x-amzn-requestid': '9151e286-9440-4131-b8a2-a6738d5c5419'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '9151e286-9440-4131-b8a2-a6738d5c5419',
+            'RetryAttempts': 0
+        }
     }
-}
-```
 
 Since looking at a single response doesn't give us a clear look at what is happening, we can instead
 take a look at a few different responses to our endpoint
@@ -2862,138 +2840,205 @@ for rec in range(10):
     print("Actual: {}".format(Y_test.values[rec]))
 ```
 
-```text
-{'Body': <botocore.response.StreamingBody object at 0x7fdadcb3f438>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': '95e3e62a-a60f-4dfb-8579-391b579672f8'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '95e3e62a-a60f-4dfb-8579-391b579672f8',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 11.719074249267578}]}
-Actual: [12.3]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadcb1eb38>,
-    'ContentType': 'text/csv; charset=utf-8',
-    'InvokedProductionVariant': 'XGB-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '18',
-                                        'content-type': 'text/csv; charset=utf-8',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'XGB-Model',
-                                        'x-amzn-requestid': 'd5c4e964-8b7e-4a9f-bc4f-5b52d99943a7'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': 'd5c4e964-8b7e-4a9f-bc4f-5b52d99943a7',
-                        'RetryAttempts': 0}}
-Model prediction: 20.114362716674805
-Actual: [16.2]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadcb1ee48>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': 'bc81c4d4-130d-4c1b-91d1-82f80dd37fbd'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': 'bc81c4d4-130d-4c1b-91d1-82f80dd37fbd',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 28.711286544799805}]}
-Actual: [23.6]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadcb1e908>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': '71fa6dbd-acb2-4f73-bc7a-c63410defe8b'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '71fa6dbd-acb2-4f73-bc7a-c63410defe8b',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 11.144815444946289}]}
-Actual: [13.6]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadcb1e198>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '47',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': 'fec8558e-179e-452c-bc46-a71492cf1386'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': 'fec8558e-179e-452c-bc46-a71492cf1386',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 26.18394660949707}]}
-Actual: [22.1]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9c88>,
-    'ContentType': 'text/csv; charset=utf-8',
-    'InvokedProductionVariant': 'XGB-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '17',
-                                        'content-type': 'text/csv; charset=utf-8',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'XGB-Model',
-                                        'x-amzn-requestid': '47cf4b1c-0909-4a01-b5e7-59b8d87901c0'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '47cf4b1c-0909-4a01-b5e7-59b8d87901c0',
-                        'RetryAttempts': 0}}
-Model prediction: 35.28992462158203
-Actual: [36.5]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9da0>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': '10d48a4c-2d34-460d-9265-8ac653c00309'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '10d48a4c-2d34-460d-9265-8ac653c00309',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 17.303707122802734}]}
-Actual: [14.9]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9a58>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': 'acd3d2db-2b42-42b7-9946-640f91dd8f8a'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': 'acd3d2db-2b42-42b7-9946-640f91dd8f8a',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 19.875295639038086}]}
-Actual: [22.6]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadc1a96d8>,
-    'ContentType': 'text/csv; charset=utf-8',
-    'InvokedProductionVariant': 'XGB-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '18',
-                                        'content-type': 'text/csv; charset=utf-8',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'XGB-Model',
-                                        'x-amzn-requestid': '355d8c53-97b6-410e-9eba-518f84eb1a7e'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '355d8c53-97b6-410e-9eba-518f84eb1a7e',
-                        'RetryAttempts': 0}}
-Model prediction: 14.214831352233887
-Actual: [14.2]
-{'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9860>,
-    'ContentType': 'application/json',
-    'InvokedProductionVariant': 'Linear-Model',
-    'ResponseMetadata': {'HTTPHeaders': {'content-length': '48',
-                                        'content-type': 'application/json',
-                                        'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
-                                        'x-amzn-invoked-production-variant': 'Linear-Model',
-                                        'x-amzn-requestid': '95dd8c9e-9655-4c0e-b669-bf209fd49a47'},
-                        'HTTPStatusCode': 200,
-                        'RequestId': '95dd8c9e-9655-4c0e-b669-bf209fd49a47',
-                        'RetryAttempts': 0}}
-Model prediction: {"predictions": [{"score": 28.779239654541016}]}
-Actual: [23.7]
-```
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadcb3f438>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': '95e3e62a-a60f-4dfb-8579-391b579672f8'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '95e3e62a-a60f-4dfb-8579-391b579672f8',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 11.719074249267578}]}
+    Actual: [12.3]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadcb1eb38>,
+        'ContentType': 'text/csv; charset=utf-8',
+        'InvokedProductionVariant': 'XGB-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '18',
+                'content-type': 'text/csv; charset=utf-8',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'XGB-Model',
+                'x-amzn-requestid': 'd5c4e964-8b7e-4a9f-bc4f-5b52d99943a7'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'd5c4e964-8b7e-4a9f-bc4f-5b52d99943a7',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: 20.114362716674805
+    Actual: [16.2]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadcb1ee48>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': 'bc81c4d4-130d-4c1b-91d1-82f80dd37fbd'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'bc81c4d4-130d-4c1b-91d1-82f80dd37fbd',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 28.711286544799805}]}
+    Actual: [23.6]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadcb1e908>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': '71fa6dbd-acb2-4f73-bc7a-c63410defe8b'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '71fa6dbd-acb2-4f73-bc7a-c63410defe8b',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 11.144815444946289}]}
+    Actual: [13.6]
+    
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadcb1e198>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '47',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': 'fec8558e-179e-452c-bc46-a71492cf1386'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'fec8558e-179e-452c-bc46-a71492cf1386',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 26.18394660949707}]}
+    Actual: [22.1]
+    
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9c88>,
+        'ContentType': 'text/csv; charset=utf-8',
+        'InvokedProductionVariant': 'XGB-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '17',
+                'content-type': 'text/csv; charset=utf-8',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'XGB-Model',
+                'x-amzn-requestid': '47cf4b1c-0909-4a01-b5e7-59b8d87901c0'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '47cf4b1c-0909-4a01-b5e7-59b8d87901c0',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: 35.28992462158203
+    Actual: [36.5]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9da0>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': '10d48a4c-2d34-460d-9265-8ac653c00309'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '10d48a4c-2d34-460d-9265-8ac653c00309',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 17.303707122802734}]}
+    Actual: [14.9]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9a58>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': 'acd3d2db-2b42-42b7-9946-640f91dd8f8a'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'acd3d2db-2b42-42b7-9946-640f91dd8f8a',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 19.875295639038086}]}
+    Actual: [22.6]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1a96d8>,
+        'ContentType': 'text/csv; charset=utf-8',
+        'InvokedProductionVariant': 'XGB-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '18',
+                'content-type': 'text/csv; charset=utf-8',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'XGB-Model',
+                'x-amzn-requestid': '355d8c53-97b6-410e-9eba-518f84eb1a7e'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '355d8c53-97b6-410e-9eba-518f84eb1a7e',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: 14.214831352233887
+    Actual: [14.2]
+
+    {
+        'Body': <botocore.response.StreamingBody object at 0x7fdadc1a9860>,
+        'ContentType': 'application/json',
+        'InvokedProductionVariant': 'Linear-Model',
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '48',
+                'content-type': 'application/json',
+                'date': 'Sun, 22 Mar 2020 22:18:09 GMT',
+                'x-amzn-invoked-production-variant': 'Linear-Model',
+                'x-amzn-requestid': '95dd8c9e-9655-4c0e-b669-bf209fd49a47'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '95dd8c9e-9655-4c0e-b669-bf209fd49a47',
+            'RetryAttempts': 0
+        }
+    }
+    Model prediction: {"predictions": [{"score": 28.779239654541016}]}
+    Actual: [23.7]
 
 If at some point we aren't sure about the properties of a deployed endpoint, we can use the
 `describe_endpoint` function to get SageMaker to return a description of the deployed endpoint.
@@ -3002,57 +3047,55 @@ If at some point we aren't sure about the properties of a deployed endpoint, we 
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```text
-{
-    'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
-    'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointConfigName': 'boston-combined-endpoint-config-2020-03-22-22-06-47',
-    'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointStatus': 'InService',
-    'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 16, 23, 934000, tzinfo=tzlocal()),
-    'ProductionVariants': [
-        {
-            'CurrentInstanceCount': 1,
-            'CurrentWeight': 1.0,
-            'DeployedImages': [
-                {
-                    'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 587000, tzinfo=tzlocal()),
-                    'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
-                    'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
-                }
-            ],
-            'DesiredInstanceCount': 1,
-            'DesiredWeight': 1.0,
-            'VariantName': 'Linear-Model'
-        },
-        {
-            'CurrentInstanceCount': 1,
-            'CurrentWeight': 1.0,
-            'DeployedImages': [
-                {
-                    'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 842000, tzinfo=tzlocal()),
-                    'ResolvedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost@sha256:97ec7833b3e2773d3924b1a863c5742e348dea61eab21b90693ac3c3bdd08522',
-                    'SpecifiedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost:0.90-1-cpu-py3'
-                }
-            ],
-            'DesiredInstanceCount': 1,
-            'DesiredWeight': 1.0,
-            'VariantName': 'XGB-Model'
+    {
+        'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
+        'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointConfigName': 'boston-combined-endpoint-config-2020-03-22-22-06-47',
+        'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointStatus': 'InService',
+        'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 16, 23, 934000, tzinfo=tzlocal()),
+        'ProductionVariants': [
+            {
+                'CurrentInstanceCount': 1,
+                'CurrentWeight': 1.0,
+                'DeployedImages': [
+                    {
+                        'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 587000, tzinfo=tzlocal()),
+                        'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
+                        'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
+                    }
+                ],
+                'DesiredInstanceCount': 1,
+                'DesiredWeight': 1.0,
+                'VariantName': 'Linear-Model'
+            },
+            {
+                'CurrentInstanceCount': 1,
+                'CurrentWeight': 1.0,
+                'DeployedImages': [
+                    {
+                        'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 842000, tzinfo=tzlocal()),
+                        'ResolvedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost@sha256:97ec7833b3e2773d3924b1a863c5742e348dea61eab21b90693ac3c3bdd08522',
+                        'SpecifiedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost:0.90-1-cpu-py3'
+                    }
+                ],
+                'DesiredInstanceCount': 1,
+                'DesiredWeight': 1.0,
+                'VariantName': 'XGB-Model'
+            }
+        ],
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '1195',
+                'content-type': 'application/x-amz-json-1.1',
+                'date': 'Sun, 22 Mar 2020 22:18:52 GMT',
+                'x-amzn-requestid': 'ce31eb2e-f2c5-401d-8fc2-d69b4a43586d'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'ce31eb2e-f2c5-401d-8fc2-d69b4a43586d',
+            'RetryAttempts': 0
         }
-    ],
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '1195',
-            'content-type': 'application/x-amz-json-1.1',
-            'date': 'Sun, 22 Mar 2020 22:18:52 GMT',
-            'x-amzn-requestid': 'ce31eb2e-f2c5-401d-8fc2-d69b4a43586d'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': 'ce31eb2e-f2c5-401d-8fc2-d69b4a43586d',
-        'RetryAttempts': 0
     }
-}
-```
 
 ## Updating an Endpoint
 
@@ -3072,22 +3115,20 @@ the newly deployed model, making sure that this happens seamlessly in the backgr
 session.sagemaker_client.update_endpoint(EndpointName=endpoint_name, EndpointConfigName=linear_endpoint_config_name)
 ```
 
-```text
-{
-    "EndpointArn":"arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15",
-    "ResponseMetadata":{
-        "RequestId":"9ca50836-85bd-43eb-8566-c19e964c8490",
-        "HTTPStatusCode":200,
-        "HTTPHeaders":{
-            "x-amzn-requestid":"9ca50836-85bd-43eb-8566-c19e964c8490",
-            "content-type":"application/x-amz-json-1.1",
-            "content-length":"110",
-            "date":"Sun, 22 Mar 2020 22:21:31 GMT"
-        },
-        "RetryAttempts":0
+    {
+        "EndpointArn":"arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15",
+        "ResponseMetadata":{
+            "RequestId":"9ca50836-85bd-43eb-8566-c19e964c8490",
+            "HTTPStatusCode":200,
+            "HTTPHeaders":{
+                "x-amzn-requestid":"9ca50836-85bd-43eb-8566-c19e964c8490",
+                "content-type":"application/x-amz-json-1.1",
+                "content-length":"110",
+                "date":"Sun, 22 Mar 2020 22:21:31 GMT"
+            },
+            "RetryAttempts":0
+        }
     }
-}
-```
 
 To get a glimpse at what is going on, we can ask SageMaker to describe our in-use endpoint now,
 before the update process has completed. When we do so, we can see that the in-use endpoint still
@@ -3097,57 +3138,55 @@ has the same characteristics it had before.
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```text
-{
-    'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
-    'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointConfigName': 'boston-combined-endpoint-config-2020-03-22-22-06-47',
-    'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointStatus': 'Updating',
-    'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 21, 32, 580000, tzinfo=tzlocal()),
-    'ProductionVariants': [
-        {
-            'CurrentInstanceCount': 1,
-            'CurrentWeight': 1.0,
-            'DeployedImages': [
-                {
-                    'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 587000, tzinfo=tzlocal()),
-                    'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
-                    'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
-                }
-            ],
-            'DesiredInstanceCount': 1,
-            'DesiredWeight': 1.0,
-            'VariantName': 'Linear-Model'
-        },
-        {
-            'CurrentInstanceCount': 1,
-            'CurrentWeight': 1.0,
-            'DeployedImages': [
-                {
-                    'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 842000, tzinfo=tzlocal()),
-                    'ResolvedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost@sha256:97ec7833b3e2773d3924b1a863c5742e348dea61eab21b90693ac3c3bdd08522',
-                    'SpecifiedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost:0.90-1-cpu-py3'
-                }
-            ],
-            'DesiredInstanceCount': 1,
-            'DesiredWeight': 1.0,
-            'VariantName': 'XGB-Model'
+    {
+        'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
+        'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointConfigName': 'boston-combined-endpoint-config-2020-03-22-22-06-47',
+        'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointStatus': 'Updating',
+        'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 21, 32, 580000, tzinfo=tzlocal()),
+        'ProductionVariants': [
+            {
+                'CurrentInstanceCount': 1,
+                'CurrentWeight': 1.0,
+                'DeployedImages': [
+                    {
+                        'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 587000, tzinfo=tzlocal()),
+                        'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
+                        'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
+                    }
+                ],
+                'DesiredInstanceCount': 1,
+                'DesiredWeight': 1.0,
+                'VariantName': 'Linear-Model'
+            },
+            {
+                'CurrentInstanceCount': 1,
+                'CurrentWeight': 1.0,
+                'DeployedImages': [
+                    {
+                        'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 10, 17, 842000, tzinfo=tzlocal()),
+                        'ResolvedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost@sha256:97ec7833b3e2773d3924b1a863c5742e348dea61eab21b90693ac3c3bdd08522',
+                        'SpecifiedImage': '246618743249.dkr.ecr.us-west-2.amazonaws.com/sagemaker-xgboost:0.90-1-cpu-py3'
+                    }
+                ],
+                'DesiredInstanceCount': 1,
+                'DesiredWeight': 1.0,
+                'VariantName': 'XGB-Model'
+            }
+        ],
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '1193',
+                'content-type': 'application/x-amz-json-1.1',
+                'date': 'Sun, 22 Mar 2020 22:21:43 GMT',
+                'x-amzn-requestid': '5878d423-cc5c-4fee-afb2-6e1fbae37db7'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': '5878d423-cc5c-4fee-afb2-6e1fbae37db7',
+            'RetryAttempts': 0
         }
-    ],
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '1193',
-            'content-type': 'application/x-amz-json-1.1',
-            'date': 'Sun, 22 Mar 2020 22:21:43 GMT',
-            'x-amzn-requestid': '5878d423-cc5c-4fee-afb2-6e1fbae37db7'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': '5878d423-cc5c-4fee-afb2-6e1fbae37db7',
-        'RetryAttempts': 0
     }
-}
-```
 
 If we now wait for the update process to complete, and then ask SageMaker to describe the endpoint,
 it will return the characteristics of the new endpoint configuration.
@@ -3160,43 +3199,41 @@ endpoint_dec = session.wait_for_endpoint(endpoint_name)
 pprint(session.sagemaker_client.describe_endpoint(EndpointName=endpoint_name))
 ```
 
-```text
-{
-    'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
-    'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointConfigName': 'boston-linear-endpoint-config-2020-03-22-21-55-35',
-    'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
-    'EndpointStatus': 'InService',
-    'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 27, 42, 956000, tzinfo=tzlocal()),
-    'ProductionVariants': [
-        {
-            'CurrentInstanceCount': 1,
-            'CurrentWeight': 1.0,
-            'DeployedImages': [
-                {
-                    'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 21, 35, 783000, tzinfo=tzlocal()),
-                    'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
-                    'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
-                }
-            ],
-            'DesiredInstanceCount': 1,
-            'DesiredWeight': 1.0,
-            'VariantName': 'Linear-Model'
+    {
+        'CreationTime': datetime.datetime(2020, 3, 22, 22, 10, 15, 958000, tzinfo=tzlocal()),
+        'EndpointArn': 'arn:aws:sagemaker:us-west-2:171758673694:endpoint/boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointConfigName': 'boston-linear-endpoint-config-2020-03-22-21-55-35',
+        'EndpointName': 'boston-update-endpoint-2020-03-22-22-10-15',
+        'EndpointStatus': 'InService',
+        'LastModifiedTime': datetime.datetime(2020, 3, 22, 22, 27, 42, 956000, tzinfo=tzlocal()),
+        'ProductionVariants': [
+            {
+                'CurrentInstanceCount': 1,
+                'CurrentWeight': 1.0,
+                'DeployedImages': [
+                    {
+                        'ResolutionTime': datetime.datetime(2020, 3, 22, 22, 21, 35, 783000, tzinfo=tzlocal()),
+                        'ResolvedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner@sha256:1cc553330fc7ab939e72cc0c0ed4bed61bbb2e7b33b4f838cb0a146d0bb5da9c',
+                        'SpecifiedImage': '174872318107.dkr.ecr.us-west-2.amazonaws.com/linear-learner:1'
+                    }
+                ],
+                'DesiredInstanceCount': 1,
+                'DesiredWeight': 1.0,
+                'VariantName': 'Linear-Model'
+            }
+        ],
+        'ResponseMetadata': {
+            'HTTPHeaders': {
+                'content-length': '770',
+                'content-type': 'application/x-amz-json-1.1',
+                'date': 'Sun, 22 Mar 2020 22:29:03 GMT',
+                'x-amzn-requestid': 'd8aa87b5-fbc8-4ceb-aafb-5f754cde8e9a'
+            },
+            'HTTPStatusCode': 200,
+            'RequestId': 'd8aa87b5-fbc8-4ceb-aafb-5f754cde8e9a',
+            'RetryAttempts': 0
         }
-    ],
-    'ResponseMetadata': {
-        'HTTPHeaders': {
-            'content-length': '770',
-            'content-type': 'application/x-amz-json-1.1',
-            'date': 'Sun, 22 Mar 2020 22:29:03 GMT',
-            'x-amzn-requestid': 'd8aa87b5-fbc8-4ceb-aafb-5f754cde8e9a'
-        },
-        'HTTPStatusCode': 200,
-        'RequestId': 'd8aa87b5-fbc8-4ceb-aafb-5f754cde8e9a',
-        'RetryAttempts': 0
     }
-}
-```
 
 ## Shut down the endpoint
 
@@ -3206,21 +3243,19 @@ Now that we've finished, we need to make sure to shut down the endpoint.
 session.sagemaker_client.delete_endpoint(EndpointName = endpoint_name)
 ```
 
-```text
-{
-    "ResponseMetadata":{
-        "RequestId":"f0a7c173-9505-40b7-bc6b-6b26a7906ff4",
-        "HTTPStatusCode":200,
-        "HTTPHeaders":{
-            "x-amzn-requestid":"f0a7c173-9505-40b7-bc6b-6b26a7906ff4",
-            "content-type":"application/x-amz-json-1.1",
-            "content-length":"0",
-            "date":"Sun, 22 Mar 2020 22:29:09 GMT"
-        },
-        "RetryAttempts":0
+    {
+        "ResponseMetadata":{
+            "RequestId":"f0a7c173-9505-40b7-bc6b-6b26a7906ff4",
+            "HTTPStatusCode":200,
+            "HTTPHeaders":{
+                "x-amzn-requestid":"f0a7c173-9505-40b7-bc6b-6b26a7906ff4",
+                "content-type":"application/x-amz-json-1.1",
+                "content-length":"0",
+                "date":"Sun, 22 Mar 2020 22:29:09 GMT"
+            },
+            "RetryAttempts":0
+        }
     }
-}
-```
 
 ## Optional: Clean up
 

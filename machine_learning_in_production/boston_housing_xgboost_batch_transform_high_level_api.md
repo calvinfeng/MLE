@@ -287,7 +287,6 @@ Now that we have fit our model to the training data, using the validation data t
 we can test our model. To do this we will make use of SageMaker's Batch Transform functionality. To
 start with, we need to build a transformer object from our fit model.
 
-
 ```python
 xgb_transformer = xgb.transformer(instance_count = 1, instance_type = 'ml.m4.xlarge')
 ```
@@ -342,7 +341,6 @@ xgb_transformer.wait()
 Now that the batch transform job has finished, the resulting output is stored on S3. Since we wish
 to analyze the output inside of our notebook we can use a bit of notebook magic to copy the output
 file from its S3 location and save it locally.
-
 
 ```python
 !aws s3 cp --recursive $xgb_transformer.output_path $data_dir

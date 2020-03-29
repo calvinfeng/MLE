@@ -502,9 +502,7 @@ transform_response = session.sagemaker_client.create_transform_job(**transform_r
 transform_desc = session.wait_for_transform_job(transform_job_name)
 ```
 
-```text
-.............................................!
-```
+    .............................................!
 
 ### Analyze the results
 
@@ -520,9 +518,7 @@ transform_output = "s3://{}/{}/batch-transform/".format(session.default_bucket()
 !aws s3 cp --recursive $transform_output $data_dir
 ```
 
-```text
-download: s3://sagemaker-us-west-2-171758673694/boston-xgboost-LL/batch-transform/test.csv.out to ../data/boston/test.csv.out
-```
+    download: s3://sagemaker-us-west-2-171758673694/boston-xgboost-LL/batch-transform/test.csv.out to ../data/boston/test.csv.out
 
 To see how well our model works we can create a simple scatter plot between the predicted and actual
 values. If the model was completely accurate the resulting scatter plot would look like the line
@@ -539,9 +535,7 @@ plt.ylabel("Predicted Price")
 plt.title("Median Price vs Predicted Price")
 ```
 
-```text
-Text(0.5, 1.0, 'Median Price vs Predicted Price')
-```
+    Text(0.5, 1.0, 'Median Price vs Predicted Price')
 
 ![png](boston_housing_xgboost_batch_transform_low_level_api_performance.png)
 
