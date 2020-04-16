@@ -2,3 +2,4 @@
 
 * PCA & KMeans Clustering in [population segmentation](population_segmentation.ipynb)
 * Linear Learner & Recall/Precision Optimizer in [fraud detection](fraud_detection.ipynb)
+* Non-linear Classifier using PyTorhc in [moon data classification](moon_data_classification_exercise.ipynb)
